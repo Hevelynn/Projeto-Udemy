@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using ProjetoUdemy.Data;
+using ProjetoUdemy.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +11,7 @@ builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<ProjetoUdemyContext>(o => o.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=projetoudemy;Integrated Security=True;TrustServerCertificate=True;"));
 
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 var app = builder.Build();
 
