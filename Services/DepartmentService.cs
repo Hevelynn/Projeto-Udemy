@@ -1,4 +1,5 @@
-﻿using ProjetoUdemy.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoUdemy.Data;
 using ProjetoUdemy.Models;
 
 namespace ProjetoUdemy.Services
@@ -12,9 +13,9 @@ namespace ProjetoUdemy.Services
             _context = context;
         }
 
-        public List<Department> FindAll()
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
     }
 }
